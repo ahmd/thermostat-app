@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ThermostatService } from "../shared/services/thermostat.service";
 import { Thermostat } from "../shared/models/thermostat.model";
 import { PageEvent } from "@angular/material/paginator";
@@ -27,12 +27,13 @@ export class ThermostatDetailsComponent implements OnInit {
 
   thermostat_id: any;
   thermostat: Thermostat;
-  thermostat_readings: ThermostatReading[];
+  thermostat_readings: ThermostatReading[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private thermostatService: ThermostatService,
-    private readingService: ThermostatReadingService
+    private readingService: ThermostatReadingService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,20 +44,22 @@ export class ThermostatDetailsComponent implements OnInit {
         if (data.body) {
           this.thermostat = data.body;
         } else {
-          console.log("errorssss");
+          this.goBack();
         }
       });
+
     this.readingService
       .getThermostatReadings(this.thermostat_id)
       .subscribe((data) => {
         if (data.body) {
           this.thermostat_readings = data.body;
-        } else {
-          console.log("errorssss");
         }
       });
   }
   changePage(event?: PageEvent) {
     return event;
+  }
+  goBack() {
+    this.router.navigate(["/home"]);
   }
 }

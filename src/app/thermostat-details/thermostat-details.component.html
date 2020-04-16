@@ -1,71 +1,77 @@
 <h2>Thermostat Reading History</h2>
-<mat-card class="thermostat-card">
-    <mat-card-header>
-        <mat-card-title>{{thermostat.household_token}}</mat-card-title>
-        <mat-card-subtitle>
-            <ng-container *ngIf="thermostat.location">
-                {{thermostat.location.line2}}, {{thermostat.location.city}}
+<ng-container *ngIf="thermostat">
+    <mat-card class="thermostat-card">
+        <mat-card-header>
+            <mat-card-title>{{thermostat.household_token}}</mat-card-title>
+            <mat-card-subtitle>
+                <ng-container *ngIf="thermostat.location">
+                    {{thermostat.location.line2}}, {{thermostat.location.city}}
+                </ng-container>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                <span class="title">
+                    Current Readings:
+                </span>
+                <span class="temperature">
+                    Temperature: {{thermostat.last_reading.temperature}}<sup>&#8451;</sup>
+                </span>
+                <span class="humidity">
+                    Humidity: {{thermostat.last_reading.humidity}}%
+                </span>
+                <span class="battery_charge"
+                    [attr.data-rate]="(thermostat.last_reading.battery_charge/20) | number:'1.0-0'">
+                    <i [ngStyle]="{ width: thermostat.last_reading.battery_charge+'%' }"></i>
+                    <span>{{thermostat.last_reading.battery_charge}}%</span>
+
+                </span>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <ng-container *ngIf="thermostat_readings.length > 0">
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = changePage($event)">
+        </mat-paginator>
+        <table mat-table [dataSource]="thermostat_readings" class="mat-elevation-z8">
+            <ng-container matColumnDef="ID">
+                <th mat-header-cell *matHeaderCellDef> ID. </th>
+                <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
             </ng-container>
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <p>
-            <span class="title">
-                Current Readings:
-            </span>
-            <span class="temperature">
-                Temperature: {{thermostat.last_reading.temperature}}<sup>&#8451;</sup>
-            </span>
-            <span class="humidity">
-                Humidity: {{thermostat.last_reading.humidity}}%
-            </span>
-            <span class="battery_charge"
-                [attr.data-rate]="(thermostat.last_reading.battery_charge/20) | number:'1.0-0'">
-                <i [ngStyle]="{ width: thermostat.last_reading.battery_charge+'%' }"></i>
-                <span>{{thermostat.last_reading.battery_charge}}%</span>
 
-            </span>
-        </p>
-    </mat-card-content>
-</mat-card>
-<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    (page)="pageEvent = changePage($event)">
-</mat-paginator>
-<table mat-table [dataSource]="thermostat_readings" class="mat-elevation-z8">
-    <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef> ID. </th>
-        <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+
+
+            <ng-container matColumnDef="temperature">
+                <th mat-header-cell *matHeaderCellDef> Temperature </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="temperature">
+                        {{element.temperature}}<sup>&#8451;</sup>
+                    </span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="humidity">
+                <th mat-header-cell *matHeaderCellDef> Humidity </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="humidity">
+                        {{element.humidity}}%
+                    </span> </td>
+            </ng-container>
+            <ng-container matColumnDef="battery_charge">
+                <th mat-header-cell *matHeaderCellDef> Battery </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="battery_charge" [attr.data-rate]="(element.battery_charge/20) | number:'1.0-0'">
+                        <i [ngStyle]="{ width: element.battery_charge+'%' }"></i>
+                        <span>{{element.battery_charge}}%</span>
+                    </span></td>
+            </ng-container>
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </ng-container>
+    <div class="no-data" *ngIf="thermostat_readings.length === 0">No records found</div>
 
-
-
-    <ng-container matColumnDef="temperature">
-        <th mat-header-cell *matHeaderCellDef> Temperature </th>
-        <td mat-cell *matCellDef="let element">
-            <span class="temperature">
-                {{element.temperature}}<sup>&#8451;</sup>
-            </span>
-        </td>
-    </ng-container>
-    <ng-container matColumnDef="humidity">
-        <th mat-header-cell *matHeaderCellDef> Humidity </th>
-        <td mat-cell *matCellDef="let element">
-            <span class="humidity">
-                {{element.humidity}}%
-            </span> </td>
-    </ng-container>
-    <ng-container matColumnDef="battery_charge">
-        <th mat-header-cell *matHeaderCellDef> Battery </th>
-        <td mat-cell *matCellDef="let element">
-            <span class="battery_charge" [attr.data-rate]="(element.battery_charge/20) | number:'1.0-0'">
-                <i [ngStyle]="{ width: element.battery_charge+'%' }"></i>
-                <span>{{element.battery_charge}}%</span>
-            </span></td>
-    </ng-container>
-
-
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</ng-container>
