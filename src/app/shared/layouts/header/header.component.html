@@ -6,7 +6,7 @@
         <nav>
             <ng-container *ngIf="currentUser != null">
                 <a mat-button routerLink="/home" routerLinkActive="active">Monitoring</a>
-                <a mat-button routerLink="/add-thermostat">Add Thermostat</a>
+                <a mat-button routerLink="/add-thermostat" *ngIf="currentUser.role == 1">Add Thermostat</a>
             </ng-container>
         </nav>
         <ng-container *ngIf="currentUser==null">
