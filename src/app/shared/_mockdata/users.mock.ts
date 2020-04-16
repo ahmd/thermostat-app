@@ -14,6 +14,6 @@ export let _users: User[] = [
     username: "owner",
     token: "RJViaCuAyg0hqUM28eqi",
     role: UserRole.OWNER,
-    thermostat_ids: [1, 2],
+    thermostat_ids: [7, 6],
   },
 ];
