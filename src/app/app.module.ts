@@ -10,12 +10,19 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatCardModule } from "@angular/material/card";
 
 import { HomeComponent } from "./home/home.component";
+import { ThermostatDetailsComponent } from "./thermostat-details/thermostat-details.component";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    ThermostatDetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,7 +31,8 @@ import { HomeComponent } from "./home/home.component";
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

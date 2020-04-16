@@ -1,0 +1,30 @@
+<h2>Thermostat Reading History</h2>
+<mat-card class="thermostat-card">
+    <mat-card-header>
+        <mat-card-title>{{thermostat.household_token}}</mat-card-title>
+        <mat-card-subtitle>
+            <ng-container *ngIf="thermostat.location">
+                {{thermostat.location.line2}}, {{thermostat.location.city}}
+            </ng-container>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            <span class="title">
+                Current Readings:
+            </span>
+            <span class="temperature">
+                Temperature: {{thermostat.last_reading.temperature}}<sup>&#8451;</sup>
+            </span>
+            <span class="humidity">
+                Humidity: {{thermostat.last_reading.humidity}}%
+            </span>
+            <span class="battery_charge"
+                [attr.data-rate]="(thermostat.last_reading.battery_charge/20) | number:'1.0-0'">
+                <i [ngStyle]="{ width: thermostat.last_reading.battery_charge+'%' }"></i>
+                <span>{{thermostat.last_reading.battery_charge}}%</span>
+
+            </span>
+        </p>
+    </mat-card-content>
+</mat-card>

@@ -13,3 +13,96 @@ body {
 table {
   width: 100%;
 }
+
+td,
+th.mat-header-cell {
+  text-align: center;
+}
+
+.battery_charge {
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 16px;
+  display: block;
+  width: 40px;
+  text-align: center;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: auto;
+
+  i {
+    background: #16af16;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &[data-rate="0"],
+  &[data-rate="1"] {
+    i {
+      background: #d85858;
+    }
+  }
+
+
+  &[data-rate="2"],
+  &[data-rate="3"] {
+    i {
+      background: #90c063;
+    }
+
+  }
+
+  &[data-rate="4"],
+  &[data-rate="5"] {
+    i {
+      background: #69d66d;
+    }
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.temperature {
+  font-weight: bold;
+}
+
+.humidity {
+  font-weight: bold;
+}
+
+.location {
+  text-align: left;
+  width: 30%;
+}
+
+mat-card-content {
+  span {
+    vertical-align: middle;
+  }
+
+  span.title {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .temperature {
+    margin-right: 1em;
+
+  }
+
+  .humidity {
+    margin-right: 1em;
+  }
+
+  .battery_charge {
+    display: inline-block;
+  }
+}
