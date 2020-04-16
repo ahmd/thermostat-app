@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { of, Observable } from "rxjs";
+import { of } from "rxjs";
 
 import { _thermostats } from "../_mockdata/thermostats.mock";
 import { HttpResponse } from "@angular/common/http";
