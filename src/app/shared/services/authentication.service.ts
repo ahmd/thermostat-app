@@ -11,7 +11,9 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
 
   constructor() {
-    this.currentUserSubject = new BehaviorSubject<User>(null);
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(localStorage.getItem("currentUser"))
+    );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -26,12 +28,14 @@ export class AuthenticationService {
     let user: User;
     if (result.length > 0) {
       user = result[0];
+      localStorage.setItem("currentUser", JSON.stringify(user));
       this.currentUserSubject.next(user);
     }
     return of(new HttpResponse({ status: 200, body: user }));
   }
 
   logout() {
+    localStorage.removeItem("currentUser");
     this.currentUserSubject.next(null);
   }
 }
