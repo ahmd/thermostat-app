@@ -1,0 +1,26 @@
+span.battery_charge {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    width: 40px;
+    text-align: center;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+
+    i {
+        background: #16af16;
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    span {
+        position: relative;
+        z-index: 2;
+    }
+}

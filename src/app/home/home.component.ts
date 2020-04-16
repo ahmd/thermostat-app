@@ -19,7 +19,15 @@ export class HomeComponent implements OnInit {
 
   thermostats: Thermostat[];
 
-  displayedColumns: string[] = ["ID", "household_token", "location", "actions"];
+  displayedColumns: string[] = [
+    "ID",
+    "household_token",
+    "temperature",
+    "humidity",
+    "battery_charge",
+    "location",
+    "actions",
+  ];
   constructor(private api: ThermostatService) {}
 
   ngOnInit(): void {
