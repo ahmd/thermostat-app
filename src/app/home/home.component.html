@@ -1,8 +1,6 @@
 <h2>Monitoring Thermostats</h2>
 <ng-container *ngIf="thermostats.length > 0">
-    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-        (page)="pageEvent = changePage($event)">
-    </mat-paginator>
+
     <table mat-table [dataSource]="thermostats" class="mat-elevation-z8">
         <ng-container matColumnDef="ID">
             <th mat-header-cell *matHeaderCellDef> ID. </th>

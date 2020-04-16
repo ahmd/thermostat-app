@@ -10,13 +10,6 @@ import { map, catchError } from "rxjs/operators";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
-
   thermostats: Thermostat[];
 
   displayedColumns: string[] = [
@@ -28,15 +21,15 @@ export class HomeComponent implements OnInit {
     "location",
     "actions",
   ];
-  constructor(private api: ThermostatService) {}
+  constructor(private thermostatService: ThermostatService) {}
 
   ngOnInit(): void {
-    this.api.getAllThermostats().subscribe((data) => {
-      this.thermostats = data.body;
-    });
+    this.getThermostats();
   }
 
-  changePage(event?: PageEvent) {
-    return event;
+  getThermostats() {
+    this.thermostatService.getAllThermostats().subscribe((data) => {
+      this.thermostats = data.body;
+    });
   }
 }
