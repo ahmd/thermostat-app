@@ -7,6 +7,7 @@ import { Thermostat } from "../models/thermostat.model";
 import { AuthenticationService } from "./authentication.service";
 import { User } from "../models/user.model";
 import { UserRole } from "../models/user-role.enum";
+import { Randomizer } from "../_mockdata/randomizer.class";
 
 @Injectable({
   providedIn: "root",
@@ -22,12 +23,18 @@ export class ThermostatService {
 
   getAllThermostats() {
     let thermostats: Thermostat[] = _thermostats;
+    let randomize = new Randomizer();
     if (this.currentUser.role == UserRole.OWNER) {
       thermostats = thermostats.filter((_thermostat) => {
+        _thermostat = randomize.change(_thermostat);
         return this.currentUser.thermostat_ids.includes(_thermostat.ID);
       });
       return of(new HttpResponse({ status: 200, body: thermostats }));
     } else {
+      thermostats = thermostats.filter((_thermostat) => {
+        _thermostat = randomize.change(_thermostat);
+        return true;
+      });
       return of(new HttpResponse({ status: 200, body: thermostats }));
     }
   }

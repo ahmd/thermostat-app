@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Thermostat } from "../shared/models/thermostat.model";
-import { PageEvent } from "@angular/material/paginator";
 import { ThermostatService } from "../shared/services/thermostat.service";
-import { map, catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-home",
@@ -25,6 +23,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getThermostats();
+
+    //pulling randomized data each 10s
+    setInterval(() => {
+      this.getThermostats();
+    }, 10000);
   }
 
   getThermostats() {
