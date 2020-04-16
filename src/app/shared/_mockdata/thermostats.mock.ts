@@ -2,8 +2,8 @@ import { Thermostat } from "../models/thermostat.model";
 
 export let _thermostats: Thermostat[] = [
   {
-    ID: 1,
-    household_token: "TH001",
+    ID: 7,
+    household_token: "TH568",
     location: {
       city: "North Carolina",
       country: "United States",
@@ -20,8 +20,8 @@ export let _thermostats: Thermostat[] = [
     },
   },
   {
-    ID: 2,
-    household_token: "TH002",
+    ID: 6,
+    household_token: "TH242",
     location: {
       city: "Illinois",
       country: "United States",
@@ -38,8 +38,8 @@ export let _thermostats: Thermostat[] = [
     },
   },
   {
-    ID: 3,
-    household_token: "TH003",
+    ID: 5,
+    household_token: "TH303",
     location: {
       city: "Minnesota",
       country: "United States",
@@ -57,7 +57,7 @@ export let _thermostats: Thermostat[] = [
   },
   {
     ID: 4,
-    household_token: "TH004",
+    household_token: "TH494",
     location: {
       city: "North Carolina",
       country: "United States",
@@ -74,8 +74,8 @@ export let _thermostats: Thermostat[] = [
     },
   },
   {
-    ID: 5,
-    household_token: "TH005",
+    ID: 3,
+    household_token: "TH515",
     location: {
       city: "Idaho",
       country: "United States",
@@ -92,8 +92,8 @@ export let _thermostats: Thermostat[] = [
     },
   },
   {
-    ID: 6,
-    household_token: "TH006",
+    ID: 2,
+    household_token: "TH689",
     location: {
       city: "Arkansas",
       country: "United States",
@@ -110,8 +110,8 @@ export let _thermostats: Thermostat[] = [
     },
   },
   {
-    ID: 7,
-    household_token: "TH007",
+    ID: 1,
+    household_token: "TH711",
     location: {
       city: "Arizona",
       country: "United States",

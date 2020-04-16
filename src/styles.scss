@@ -85,6 +85,12 @@ th.mat-header-cell {
 .location {
   text-align: left;
   width: 30%;
+
+  span:not(:last-child):after {
+    content: ",";
+    margin: 0 2px 0 0px;
+
+  }
 }
 
 mat-card-content {
@@ -115,4 +121,12 @@ mat-card-content {
   text-align: center;
   padding: 20px;
   color: #666;
+}
+
+.mat-card-subtitle {
+  span:not(:last-child):after {
+    content: ",";
+    margin: 0 2px 0 0px;
+
+  }
 }

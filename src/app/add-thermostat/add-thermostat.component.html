@@ -1,0 +1,33 @@
+<h2>Add New Thermostat</h2>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Household Token" formControlName="household_token">
+        <mat-error *ngIf="errorHandling('household_token', 'required')">
+            You must provide a <strong>Household Token</strong>
+        </mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Country" formControlName="country">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="City" formControlName="city">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Address Line 1" formControlName="line1">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Address Line 2" formControlName="line2">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Postal Code" formControlName="postalCode">
+    </mat-form-field>
+
+    <!-- Submit -->
+    <div class="button-wrapper">
+        <button mat-flat-button color="primary">ADD NOW</button>
+        <button mat-flat-button [routerLink]="['/home']"> Go Back</button>
+    </div>
+
+</form>

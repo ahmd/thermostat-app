@@ -9,6 +9,9 @@ import { Thermostat } from "../models/thermostat.model";
   providedIn: "root",
 })
 export class ThermostatService {
+  //used to get unique sequance id for adding new object
+  private last_id = 7;
+
   constructor() {}
 
   getAllThermostats() {
@@ -24,5 +27,11 @@ export class ThermostatService {
       thermostat = result[0];
     }
     return of(new HttpResponse({ status: 200, body: thermostat }));
+  }
+  addThermostat(thermostat: Thermostat) {
+    this.last_id = this.last_id + 1;
+    thermostat.ID = this.last_id;
+    _thermostats.unshift(thermostat);
+    return of(new HttpResponse({ status: 201, body: {} }));
   }
 }
