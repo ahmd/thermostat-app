@@ -1,0 +1,27 @@
+<div class="login">
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+        <h2>Login</h2>
+        <p>The username is <strong>manager</strong> or <strong>owner</strong> [no password needed]</p>
+
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Username" formControlName="username">
+            <mat-error *ngIf="errorHandling('username', 'required')">
+                username is "<strong>manager</strong> or <strong>owner</strong>
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="password" readonly value="********">
+        </mat-form-field>
+
+
+        <!-- Submit -->
+        <div class="button-wrapper">
+            <button mat-flat-button color="primary">LOGIN NOW</button>
+        </div>
+        <div class="error-message" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
+    </form>
+</div>

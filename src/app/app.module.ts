@@ -19,6 +19,7 @@ import { MatInputModule } from "@angular/material/input";
 import { HomeComponent } from "./home/home.component";
 import { ThermostatDetailsComponent } from "./thermostat-details/thermostat-details.component";
 import { AddThermostatComponent } from "./add-thermostat/add-thermostat.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AddThermostatComponent } from "./add-thermostat/add-thermostat.componen
     HomeComponent,
     ThermostatDetailsComponent,
     AddThermostatComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
