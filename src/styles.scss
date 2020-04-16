@@ -14,9 +14,13 @@ table {
   width: 100%;
 }
 
-td,
-th.mat-header-cell {
+td {
   text-align: center;
+
+}
+
+th.mat-header-cell {
+  text-align: center !important;
 }
 
 .battery_charge {
