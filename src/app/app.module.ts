@@ -9,9 +9,13 @@ import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { MatTableModule } from "@angular/material/table";
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+import { HomeComponent } from "./home/home.component";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +23,8 @@ import { MatButtonModule } from "@angular/material/button";
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
