@@ -6,5 +6,5 @@ export class User {
   username: string;
   token: string;
   role: UserRole;
-  thermostats: Thermostat[];
+  thermostat_ids: number[];
 }
