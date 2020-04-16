@@ -30,4 +30,8 @@ export class AuthenticationService {
     }
     return of(new HttpResponse({ status: 200, body: user }));
   }
+
+  logout() {
+    this.currentUserSubject.next(null);
+  }
 }

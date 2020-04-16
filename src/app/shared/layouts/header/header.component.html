@@ -4,10 +4,26 @@
             <a routerLink="/home">Thermostat Monitor</a>
         </h1>
         <nav>
-            <a mat-button routerLink="/home" routerLinkActive="active">Monitoring</a>
-            <a mat-button routerLink="/add-thermostat">Add Thermostat</a>
+            <ng-container *ngIf="currentUser != null">
+                <a mat-button routerLink="/home" routerLinkActive="active">Monitoring</a>
+                <a mat-button routerLink="/add-thermostat">Add Thermostat</a>
+            </ng-container>
         </nav>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="logout icon">logout</mat-icon>
+        <ng-container *ngIf="currentUser==null">
+            <span>
+                <a mat-button routerLink="/login">Login</a>
+            </span>
+        </ng-container>
+        <ng-container *ngIf="currentUser != null">
+            <div class="user-panel">
+                <span>Welcome, {{currentUser.username}}</span>
+                <mat-icon (click)="logout()" class="logout-icon" aria-hidden="false" aria-label="logout icon">logout
+                </mat-icon>
+
+            </div>
+        </ng-container>
+
+
     </mat-toolbar-row>
 
 </mat-toolbar>

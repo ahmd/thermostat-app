@@ -4,8 +4,23 @@ nav {
 
 .app-name {
   margin-right: 1em;
+
   a {
     color: #fff;
     text-decoration: none;
+  }
+}
+
+.user-panel {
+  span {
+    margin-right: 20px;
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .mat-icon {
+    vertical-align: middle;
+    cursor: pointer;
   }
 }
