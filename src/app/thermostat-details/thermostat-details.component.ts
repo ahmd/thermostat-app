@@ -12,7 +12,7 @@ import { ThermostatReadingService } from "../shared/services/thermostat-reading.
   styleUrls: ["./thermostat-details.component.scss"],
 })
 export class ThermostatDetailsComponent implements OnInit {
-  length = 100;
+  length: number;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
@@ -38,6 +38,11 @@ export class ThermostatDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.thermostat_id = this.route.snapshot.paramMap.get("thermostat_id");
+    this.getThermostatDetails();
+    this.getThermostatHistory(0, this.pageSize);
+  }
+
+  getThermostatDetails() {
     this.thermostatService
       .getThermostatById(this.thermostat_id)
       .subscribe((data) => {
@@ -47,18 +52,24 @@ export class ThermostatDetailsComponent implements OnInit {
           this.goBack();
         }
       });
+  }
 
+  getThermostatHistory(pageIndex: number, pageSize: number) {
     this.readingService
-      .getThermostatReadings(this.thermostat_id)
+      .getThermostatReadings(this.thermostat_id, pageIndex, pageSize)
       .subscribe((data) => {
         if (data.body) {
-          this.thermostat_readings = data.body;
+          this.length = data.body.total;
+          this.thermostat_readings = data.body.readings;
         }
       });
   }
+
   changePage(event?: PageEvent) {
+    this.getThermostatHistory(event.pageIndex, event.pageSize);
     return event;
   }
+
   goBack() {
     this.router.navigate(["/home"]);
   }
